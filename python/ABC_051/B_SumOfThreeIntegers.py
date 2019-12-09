@@ -1,14 +1,16 @@
+from typing import Tuple, Iterable
+
 
 def main()->None:
-    K, S = map(int, input().split())
+    (K, S):Tuple[int, int] = map(int, input().split())
 
-    range_x = range(K+1)
-    range_y = range(K+1)
+    range_x:Iterable[int] = range(K+1)
+    range_y:Iterable[int] = range(K+1)
 
-    counter = 0
+    counter:int = 0
     for x in range_x:
         for y in range_y:
-            z = S - x - y
+            z:int = S - x - y
             if 0 <= z <= K:
                 counter += 1
     print(counter)
