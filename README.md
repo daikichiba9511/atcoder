@@ -5,6 +5,6 @@ atcoderの書いたコードを無造作に貯めておくもの。
 動作するかは知りません。（一応ほとんど動かしてはいる。
 
 
-<link href="https://atcoder.jp/">atcoder</link>
+<a href="https://atcoder.jp/">atcoder</a>
 
 
