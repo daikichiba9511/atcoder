@@ -10,7 +10,7 @@ def main()->None:
     while i < N  :
         # sameを抜ける
         while (i+1 < N) and (A[i] == A[i+1]):
-            i += 1 
+            i += 1
         # up
         if (i+1 < N) and (A[i] < A[i+1]):
             while (i+1 < N) and (A[i] <= A[i+1]):
