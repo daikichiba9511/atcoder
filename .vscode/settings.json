@@ -1,3 +1,4 @@
 {
-    "julia.environmentPath": "/Users/chibadaimare/.julia/environments/v1.0"
+    "julia.environmentPath": "/Users/chibadaimare/.julia/environments/v1.0",
+    "python.pythonPath": "/usr/local/Caskroom/miniconda/base/envs/work/bin/python"
 }
