@@ -1,5 +1,5 @@
 def main():
-    n, k = map(int, input().split())
+    _, k = map(int, input().split())
     h_l = list(map(int, input().split()))
     cnt = 0
     for h_i in h_l:
