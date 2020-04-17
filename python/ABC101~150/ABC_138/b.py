@@ -6,6 +6,5 @@ def main():
     for a in a_l:
         frac += (1 / a)
     print(1/frac)
-
 if __name__ == "__main__":
     main()
