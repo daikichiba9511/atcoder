@@ -26,7 +26,7 @@ num-derive = "=0.3.0"
 ndarray = "=0.13.0"
 
 # 線形代数
-nalgebra = "=0.20.0"
+nalgebra = "=0.27.1"
 
 # (線形)代数の抽象化
 alga = "=0.9.3"
