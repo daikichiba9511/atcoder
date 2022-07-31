@@ -1,8 +1,9 @@
 import heapq
 from typing import List, Tuple
 
-def dijkstra_heap(start: int, n: int, edges: List[List[Tuple[int, int]]]):
-    """ heapqをつかった重みつきグラフのダイクストラ法
+
+def dijkstra_heap(start: int, n: int, edges: List[List[Tuple[int, int]]]) -> List[int]:
+    """heapqをつかった重みつきグラフのダイクストラ法
 
     Args:
         start: 探索を開始するノードのindex
