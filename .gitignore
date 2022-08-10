@@ -1,2 +1,3 @@
-rust/target
-rust/*/testcases/*
+/rust/target/
+/rust/*/testcases/*/
+typical90/rust/target
