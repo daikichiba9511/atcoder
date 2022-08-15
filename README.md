@@ -2,7 +2,7 @@
 
 I made this repository for code of solution on atcoder.
 
-However, I have pushed code abount competitive programing now.
+However, I have pushed code about competitive programing now.
 
 these code is almost runned on Atcoder Jadge System, but ensure these code running.
 
