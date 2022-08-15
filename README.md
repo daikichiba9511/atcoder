@@ -1,5 +1,15 @@
-# atcoder
+# atcoder for myself
 
-atcoderの書いたコードを無造作に貯めておくもの。<br>
+I made this repository for code of solution on atcoder.
 
-<a href="https://atcoder.jp/">atcoder</a>
+However, I have pushed code abount competitive programing now.
+
+these code is almost runned on Atcoder Jadge System, but ensure these code running.
+
+Some code do not work well.
+
+
+## Reference
+
+- [atcoder](https://atcoder.jp/)
+
