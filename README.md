@@ -8,8 +8,6 @@ these code is almost runned on Atcoder Jadge System, but ensure these code runni
 
 Some code do not work well.
 
-
 ## Reference
 
 - [atcoder](https://atcoder.jp/)
-
