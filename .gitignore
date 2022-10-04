@@ -2,3 +2,4 @@
 /rust/*/testcases/*/
 typical90/rust/target
 .vscode
+*.out
