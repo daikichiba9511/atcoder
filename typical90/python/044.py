@@ -11,7 +11,8 @@ for _ in range(q):
     if t == 1:
         # nを越えないように余りでindexを指定
         # これで順繰りにアクセスできる
-        a[(x + t2_memo) % n], a[(y + t2_memo) % n] = a[(y + t2_memo) % n], a[(x + t2_memo) % n]
+        a[(x + t2_memo) % n] = a[(y + t2_memo) % n]
+        a[(y + t2_memo) % n] = a[(x + t2_memo) % n]
         continue
 
     if t == 2:

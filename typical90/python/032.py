@@ -1,4 +1,4 @@
-# from __future__ import annotations
+from __future__ import annotations
 
 from itertools import permutations
 
@@ -24,12 +24,13 @@ ans = 1 << 30
 # 制約が小さいときに、順列全探索
 for perm in permutations(range(n), n):
     s = 0
-    flag = False
+    is_invalid = False
     # iとi+1の仲が悪いなら不適な順列
     for interval_idx in range(n - 1):
         if bad_list[perm[interval_idx]][perm[interval_idx + 1]]:
-            flag = True
-    if flag:
+            is_invalid = True
+            break
+    if is_invalid:
         continue
 
     for interval_idx in range(n):
@@ -40,4 +41,3 @@ if ans == 1 << 30:
     print("-1")
 else:
     print(ans)
-
