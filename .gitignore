@@ -3,3 +3,4 @@
 typical90/rust/target
 .vscode
 *.out
+**/test/*
