@@ -1,6 +1,8 @@
 /rust/target/
-/rust/*/testcases/*/
+**/testcases/*
 typical90/rust/target
 .vscode
 *.out
 **/test/*
+*cpython*
+*.txt
