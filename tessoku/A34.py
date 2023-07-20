@@ -1,39 +1,34 @@
-N, X, Y = map(int, input().split())
-A = list(map(int, input().split()))
+
+
+n, x, y = map(int, input().split())
+a = list(map(int, input().split()))
 
 # Grundy数を求める
-# 1 <= N <= 10**5
-# 1 <= X < Y <= 10**9
-# 1 <= A[i] <= 10**9
-# 変数 grundy[i]: 石がi個あるときのGrundy数
-# 変数 Transit[i]: Grundy数がiとなるような遷移ができるか
-# 石が最大で10**5個あるので、grundy数のslotは10**5個用意する
-# grundy数は0, 1, 2の3種類
-M = 10 ** 5
-grundy = [0] * M
-for i in range(M):
+# grundy[i] : 石がi個のGrundy数
+# transit[i] : grundy数がiとなるような遷移ができるか
+# 各山の個数のgrundy数を求める
+# 後でそれぞれの山のgrundy数のxorをとる
+grundy = [0] * (10**6 + 1)
+for i in range(10**6 + 1):
+    # 遷移できるかどうかを調べる
     transit = [False] * 3
+    if i >= x:
+        transit[grundy[i - x]] = True
+    if i >= y:
+        transit[grundy[i - y]] = True
 
-    if i >= X:
-        transit[grundy[i - X]] = True
-    if i >= Y:
-        transit[grundy[i - Y]] = True
-
-    # transit[0] is False
+    # 遷移できるならgrundy数を求める
+    # i = 0: grundy[0] = 0
     if not transit[0]:
         grundy[i] = 0
-    # transit[1] is False
     elif not transit[1]:
         grundy[i] = 1
-    # transit[2] is False
     else:
         grundy[i] = 2
 
-# 出力
 xor_sum = 0
-for i in range(N):
-    xor_sum ^= grundy[A[i]]
-
+for i in range(n):
+    xor_sum ^= grundy[a[i]]
 if xor_sum != 0:
     print("First")
 else:
