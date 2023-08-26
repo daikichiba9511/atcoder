@@ -15,11 +15,15 @@ fn main() {
     let mut dist = vec![std::i32::MAX; n + 1];
     let mut heap = BinaryHeap::new();
     let t = t.into_iter().enumerate().collect_vec();
+    // 始点から各頂点へのコストを足す O(N)
     for (i, t) in t {
         heap.push((Reverse(t), i));
     }
 
-    // O(nlogn)
+    // 始点から一番コストの低い点へ始める = Reverseを使って最小値をpopする
+    // コストの最小値はlog|V|で取り出せる
+    // 更新の回数は辺の数だけ発生する
+    // -> O(|E| log|V| )
     while let Some((Reverse(cost), v)) = heap.pop() {
         // すでに決まってる値が小さいなら更新しない
         if dist[v] <= cost {
