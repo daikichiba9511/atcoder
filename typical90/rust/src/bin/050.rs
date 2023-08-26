@@ -1,5 +1,8 @@
 use proconio::{fastout, input};
 
+/// solution #1
+/// 配るDP
+///
 fn solve() {
     input! {
         n: usize,
@@ -29,6 +32,11 @@ struct DP {
 }
 
 impl DP {
+    /// new function for DP
+    ///
+    /// * `n` - the number of steps
+    /// * `l` - the number of steps to jump
+    /// * `m` - the modulo
     fn new(n: usize, l: usize, m: u64) -> Self {
         DP {
             dp: vec![0; n + 1],
