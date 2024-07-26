@@ -22,6 +22,8 @@ test-suite = "{{ manifest_dir }}/testcases/{{ bin_alias }}.yml"
 
 [template]
 src = '''
+#[allow(unused_imports)]
+use num::integer::gcd;
 use proconio::{input, fastout};
 
 // =============================================
@@ -82,7 +84,9 @@ macro_rules! max {
 #[allow(dead_code)]
 const INF: i32 = 100_000_000;
 
-
+// =============================================
+// Main
+// =============================================
 #[fastout]
 fn main() {
     input!{
@@ -190,13 +194,8 @@ path = "./{{ contest }}"
 
 [test]
 # Toolchain for the test. (optional)
-<<<<<<< HEAD
 toolchain = "1.76.0"
-||||||| parent of 68309a6 (update)
-toolchain = "1.42.0"
-=======
 # toolchain = "1.42.0"
->>>>>>> 68309a6 (update)
 # Profile for `cargo build`. ("dev" | "release")
 #
 # Defaults to `"dev"`.
@@ -205,10 +204,5 @@ toolchain = "1.42.0"
 #[submit.transpile]
 #kind = "command"
 #args = ["cargo", "equip", "--exclude-atcoder-crates", "--resolve-cfgs", "--remove", "docs", "--minify", "libs", "--rustfmt", "--check", "--bin", "{{ bin_name }}"]
-<<<<<<< HEAD
-language_id = "5054"
-||||||| parent of 68309a6 (update)
+# language_id = "5054"
 ##language_id = ""
-=======
-##language_id = ""
->>>>>>> 68309a6 (update)
