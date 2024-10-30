@@ -7,6 +7,7 @@ edition = "2018"
 typical90-001 = { alias = "001", problem = "https://atcoder.jp/contests/typical90/tasks/typical90_a" }
 typical90-002 = { alias = "002", problem = "https://atcoder.jp/contests/typical90/tasks/typical90_b" }
 typical90-003 = { alias = "003", problem = "https://atcoder.jp/contests/typical90/tasks/typical90_c" }
+typical90-003-2 = { alias = "003-2", problem = "https://atcoder.jp/contests/typical90/tasks/typical90_c" }
 typical90-004 = { alias = "004", problem = "https://atcoder.jp/contests/typical90/tasks/typical90_d" }
 typical90-005 = { alias = "005", problem = "https://atcoder.jp/contests/typical90/tasks/typical90_e" }
 typical90-006 = { alias = "006", problem = "https://atcoder.jp/contests/typical90/tasks/typical90_f" }

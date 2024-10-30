@@ -57,8 +57,26 @@ macro_rules! max {
     }};
 }
 
+fn get_dist(start: usize, n: usize, graph: &Vec<Vec<usize>>) -> Vec<i32> {
+    let mut dist = vec![INF; n];
+    let mut queue: std::collections::VecDeque<i32> = std::collections::VecDeque::new();
+    queue.push_back(start as i32);
+    dist[start] = 0;
+    while let Some(v) = queue.pop_front() {
+        for &next in &graph[v as usize] {
+            if dist[next] == INF {
+                dist[next] = dist[v as usize] + 1;
+                queue.push_back(next as i32);
+            }
+        }
+    }
+    dist
+}
+
 #[allow(dead_code)]
 const INF: i32 = 100_000_000;
+
+#[fastout]
 fn main() {
     // サイクルがあるか、ある場合はその最大長を求める問題
     // N頂点N-1辺の連結なグラフ=木構造
@@ -80,42 +98,21 @@ fn main() {
     }
 
     // 頂点1からの各頂点への最短距離を求める
-    let mut dist = vec![INF; n];
-    let mut queue = std::collections::VecDeque::new();
-    queue.push_back(0);
-    dist[0] = 0;
-
-    while let Some(v) = queue.pop_front() {
-        for &next in &graph[v] {
-            if dist[next] == INF {
-                dist[next] = dist[v] + 1;
-                queue.push_back(next);
-            }
-        }
-    }
-
+    let dist = get_dist(0, n, &graph);
+    // 最短距離の中で最も遠い点を求める
     let mut max_dist = 0;
     let mut max_dist_index = 0;
-    for i in 0..n {
-        if chmax!(max_dist, dist[i]) {
-            max_dist_index = i;
+    for (i_dist, dist_i) in dist.iter().enumerate() {
+        if dist_i > &max_dist {
+            max_dist = *dist_i;
+            max_dist_index = i_dist;
         }
     }
 
     // 木の直径を求める
-    let mut dist = vec![INF; n];
-    let mut queue = std::collections::VecDeque::new();
-    queue.push_back(max_dist_index);
-    dist[0] = 0;
-    while let Some(v) = queue.pop_front() {
-        for &next in &graph[v] {
-            if dist[next] == INF {
-                dist[next] = dist[v] + 1;
-                queue.push_back(next);
-            }
-        }
-    }
-
+    // 最も通り遠い点からの最短距離を求める
+    let dist = get_dist(max_dist_index, n, &graph);
+    // 最短距離の中で最も遠い点を求める
     let mut max_dist = -1;
     for dist_i in dist {
         chmax!(max_dist, dist_i);
