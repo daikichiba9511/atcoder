@@ -59,6 +59,8 @@ macro_rules! max {
 
 #[allow(dead_code)]
 const INF: i32 = 100_000_000;
+
+#[fastout]
 fn main() {
     // サイクルがあるか、ある場合はその最大長を求める問題
     // N頂点N-1辺の連結なグラフ=木構造
