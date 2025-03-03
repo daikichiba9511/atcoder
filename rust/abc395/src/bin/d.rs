@@ -61,7 +61,7 @@ macro_rules! max {
 const INF: i32 = 100_000_000;
 
 fn init_vec(n: usize) -> Vec<i32> {
-    (0..n).enumerate().map(|(i, _)| i as i32).collect()
+    (0..n as i32).collect()
 }
 
 // =============================================
@@ -78,18 +78,23 @@ fn main() {
 
     for _ in 0..q {
         input! {i: i32}
-        if i == 1 {
-            input! {a: usize, b: usize}
-            p2b[a - 1] = l2b[b - 1];
-        } else if i == 2 {
-            input! {a: usize, b: usize}
-            // ラベル鳩 -> 巣の情報を更新
-            l2b.swap(a - 1, b - 1);
-            // 巣 -> ラベル鳩の情報を更新
-            b2l.swap(l2b[a - 1] as usize, l2b[b - 1] as usize);
-        } else {
-            input! {a: usize}
-            println!("{}", b2l[p2b[a - 1] as usize] + 1);
+        match i {
+            1 => {
+                input! {a: usize, b: usize}
+                p2b[a - 1] = l2b[b - 1];
+            }
+            2 => {
+                input! {a: usize, b: usize}
+                // ラベル鳩 -> 巣の情報を更新
+                l2b.swap(a - 1, b - 1);
+                // 巣 -> ラベル鳩の情報を更新
+                b2l.swap(l2b[a - 1] as usize, l2b[b - 1] as usize);
+            }
+            3 => {
+                input! {a: usize}
+                println!("{}", b2l[p2b[a - 1] as usize] + 1);
+            }
+            _ => {}
         }
     }
 }
