@@ -1,6 +1,6 @@
 #[allow(unused_imports)]
 use num::integer::gcd;
-use proconio::{input, fastout};
+use proconio::{fastout, input};
 
 // =============================================
 // Library
@@ -65,7 +65,21 @@ const INF: i32 = 100_000_000;
 // =============================================
 #[fastout]
 fn main() {
-    input!{
-
+    input! {
+        n: usize, q: usize,
+        a: [i32; n]
     };
+
+    // 前計算で累積和を持っておく
+    let mut a_cum = vec![0; n + 1];
+    for i in 0..n {
+        a_cum[i + 1] = a_cum[i] + a[i];
+    }
+    for _ in 0..q {
+        input! {
+            li: usize, ri: usize
+        }
+        let sum_section = a_cum[ri] - a_cum[li - 1];
+        println!("{}", sum_section);
+    }
 }

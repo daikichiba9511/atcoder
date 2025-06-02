@@ -1,6 +1,7 @@
+use itertools_num::ItertoolsNum;
 #[allow(unused_imports)]
 use num::integer::gcd;
-use proconio::{input, fastout};
+use proconio::{fastout, input};
 
 // =============================================
 // Library
@@ -65,7 +66,21 @@ const INF: i32 = 100_000_000;
 // =============================================
 #[fastout]
 fn main() {
-    input!{
-
+    input! {
+        d: usize,
+        n: usize,
     };
+    let mut dr = vec![0; d + 2];
+    for _ in 0..n {
+        input! {
+            il: usize, ir: usize
+        }
+        dr[il] += 1;
+        dr[ir + 1] -= 1;
+    }
+    let sum_a_day: Vec<_> = dr.iter().cumsum::<i32>().collect();
+    for a in &sum_a_day[1..d+1] {
+        println!("{}", a);
+    }
 }
+
