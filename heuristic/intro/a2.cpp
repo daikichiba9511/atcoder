@@ -13,18 +13,20 @@ using ll = long long;
 // -- Constants
 const std::chrono::duration<double> TIME_LIMIT(1.9);
 // const std::chrono::duration<double> TIME_LIMIT(20);
-const int START_TEMP = 100;                  // 初期温度
-const int END_TEMP = 5;                      // 終了温度
-const int DIFF_TEMP = START_TEMP - END_TEMP; // 温度差
+const int START_TEMP = 100;                   // 初期温度
+const int END_TEMP = 5;                       // 終了温度
+const int DIFF_TEMP = START_TEMP - END_TEMP;  // 温度差
 // -- Functions
-template <typename T> bool chmin(T &a, const T &b) {
+template <typename T>
+bool chmin(T &a, const T &b) {
   if (a > b) {
     a = b;
     return true;
   }
   return false;
 }
-template <typename T> bool chmax(T &a, const T &b) {
+template <typename T>
+bool chmax(T &a, const T &b) {
   if (a < b) {
     a = b;
     return true;
@@ -87,10 +89,10 @@ struct State {
 };
 
 State init(const Input &input) {
-  std::vector<int> t(input.d); // 初期状態では全てのtypeを0に設定
+  std::vector<int> t(input.d);  // 初期状態では全てのtypeを0に設定
   for (int i = 0; i < input.d; ++i) {
     // randomにtypeを選ぶ
-    t[i] = randxor() % 26; // 0から25の範囲でランダムに選ぶ
+    t[i] = randxor() % 26;  // 0から25の範囲でランダムに選ぶ
   }
   int score = compute_score(input, t);
   return State(t, score);
@@ -153,7 +155,7 @@ int main() {
   while (true) {
     if (steps % 1000 == 0) {
       if (std::chrono::steady_clock::now() - start > TIME_LIMIT) {
-        break; // 時間制限を超えたら終了
+        break;  // 時間制限を超えたら終了
       }
     }
     ++steps;
@@ -170,7 +172,7 @@ int main() {
     // } else {
     //   operatoration_type = (randxor() % 10 < 7) ? 0 : 2; // 単一要素変更70%
     // }
-    int operatoration_type = (randxor() % 10 < 7) ? 0 : 2; // 単一要素変更70%
+    int operatoration_type = (randxor() % 10 < 7) ? 0 : 2;  // 単一要素変更70%
     // int operatoration_type = randxor() % 3; // 均等に選ぶ
 
     if (operatoration_type == 0) {
@@ -195,7 +197,7 @@ int main() {
       const int start_day = randxor() % d;
       const int end_day = start_day + randxor() % d;
       if (abs(start_day - end_day) > 16) {
-        continue; // 反転する範囲が大きすぎる場合はスキップ
+        continue;  // 反転する範囲が大きすぎる場合はスキップ
       }
       reverse(state.t.begin() + start_day,
               state.t.begin() + std::min(end_day, d));
@@ -207,7 +209,7 @@ int main() {
       const bool accept = prob > (double)(randxor() % 10000) / 10000.0;
       if (state.score < old_score && !accept) {
         reverse(state.t.begin() + start_day,
-                state.t.begin() + std::min(end_day, d)); // 元に戻す
+                state.t.begin() + std::min(end_day, d));  // 元に戻す
         state.score = old_score;
       }
 
@@ -225,7 +227,7 @@ int main() {
         const double prob = exp((state.score - old_score) / temp);
         const bool accept = prob > (double)(randxor() % 10000) / 10000.0;
         if (state.score < old_score && !accept) {
-          std::swap(state.t[day1], state.t[day2]); // 元に戻す
+          std::swap(state.t[day1], state.t[day2]);  // 元に戻す
           state.score = old_score;
         }
       }
