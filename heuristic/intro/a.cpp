@@ -7,20 +7,22 @@
 using ll = long long;
 // -- Macros
 #define rep(i, n) for (ll i = 0; i < (n); ++i)
-std::mt19937 rng(42); // 固定シードで初期化
+std::mt19937 rng(42);  // 固定シードで初期化
 std::uniform_int_distribution<int> dist(0, 25);
 
 // Constants
 const std::chrono::duration<double> TIME_LIMIT(1.9);
 
-template <typename T> bool chmin(T &a, const T &b) {
+template <typename T>
+bool chmin(T &a, const T &b) {
   if (a > b) {
     a = b;
     return true;
   }
   return false;
 }
-template <typename T> bool chmax(T &a, const T &b) {
+template <typename T>
+bool chmax(T &a, const T &b) {
   if (a < b) {
     a = b;
     return true;
@@ -66,10 +68,10 @@ struct State {
 };
 
 State init(const Input &input) {
-  std::vector<int> t(input.d); // 初期状態では全てのtypeを0に設定
+  std::vector<int> t(input.d);  // 初期状態では全てのtypeを0に設定
   for (int i = 0; i < input.d; ++i) {
     // randomにtypeを選ぶ
-    t[i] = dist(rng); // 0から25の範囲でランダムに選ぶ
+    t[i] = dist(rng);  // 0から25の範囲でランダムに選ぶ
   }
   int score = compute_score(input, t);
   return State(t, score);
@@ -107,16 +109,16 @@ int main() {
   State state = init(input);
   auto start = chrono::steady_clock::now();
   while (chrono::steady_clock::now() - start < TIME_LIMIT) {
-    int day = rand() % d; // 0からd-1の範囲でランダムに日付を選ぶ
+    int day = rand() % d;  // 0からd-1の範囲でランダムに日付を選ぶ
     int type = dist(rng);
-    int old_type = state.t[day];             // 元のtypeを保存
-    int old_score = state.score;             // 元のスコアを保存
-    state.t[day] = type;                     // 指定された日付にtypeを設定
-    state.score = evaluate(input, state, 5); // スコアを計算
+    int old_type = state.t[day];              // 元のtypeを保存
+    int old_score = state.score;              // 元のスコアを保存
+    state.t[day] = type;                      // 指定された日付にtypeを設定
+    state.score = evaluate(input, state, 5);  // スコアを計算
     if (state.score < old_score) {
       // スコアが悪化した場合は元の状態に戻す
-      state.t[day] = old_type; // 元のtypeに戻す
-      state.score = old_score; // 元のスコアに戻す
+      state.t[day] = old_type;  // 元のtypeに戻す
+      state.score = old_score;  // 元のスコアに戻す
     }
   }
   cerr << "Best score: " << compute_score(input, state.t) << endl;
